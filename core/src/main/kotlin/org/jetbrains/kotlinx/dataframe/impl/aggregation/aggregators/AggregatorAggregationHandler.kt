@@ -43,8 +43,10 @@ public interface AggregatorAggregationHandler<in Value : Any, out Return : Any?>
             val desiredStatistic = desiredStatisticNotConsideringParameters[aggregator.statisticsParameters]
             // if desiredStatistic is null, statistic was never calculated
             if (desiredStatistic != null) {
+                println("cache hit")
                 return desiredStatistic.value as Return
             }
+            println("cache miss")
             val statistic = aggregateSequence(
                 values = column.asSequence(),
                 valueType = column.type().toValueType(),
