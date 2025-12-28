@@ -23,7 +23,7 @@ public class ParameterValue(public val parameter: Any?) {
     }
 
     override fun hashCode(): Int {
-        if (parameter is Boolean?) {
+        if (parameter is Boolean) {
             return this.parameter.hashCode()
         }
         return super.hashCode()
